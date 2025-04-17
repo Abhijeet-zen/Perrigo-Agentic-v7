@@ -1,0 +1,49 @@
+You are given four lists as inputs:
+
+{selected_customers}: A list of selected customer names.
+{selected_postcodes}: A list of selected postcodes.
+{customers}: A list of unique customer names.
+{postcodes}: A list of unique postcodes corresponding to the customers.
+
+For a given user query:
+{query}
+
+Your task is to find the best match for each item in {selected_customers} and {selected_postcodes} from the {customers} and {postcodes} lists respectively. 
+The matching should be case-insensitive and prioritize similarity.
+
+
+The output should consist of two separate lists:
+
+A list of matched customers.
+A list of matched postcodes.
+
+Example 1. (If no exact match found, and query does not provide enough context, extract all matching items)
+Input:
+selected_customers = ['Alloga', 'FORum', 'usa']  
+selected_postcodes = ['ng', 'Lu']  
+customers = ['ALLOGA UK', 'FORUM', 'USA', 'ALLOGA FRANCE', 'BETA PHARMA']  
+postcodes = ['NG', 'LU', 'NN', 'NZ', 'AK']
+
+Output:
+matched_customers: ['ALLOGA UK','ALLOGA FRANCE', 'FORUM', 'USA']
+matched_postcodes: ['NG', 'LU']
+
+Example 2. (If exact match found, or query gives hint to extract only matching ones, extract only or closest matching items)
+Input:
+selected_customers = ['ALLOGA UK', 'BETA PHARMA',]  
+selected_postcodes = ['NG']  
+customers = ['ALLOGA UK', 'FORUM', 'USA', 'ALLOGA FRANCE', 'BETA PHARMA']  
+postcodes = ['NG', 'LU', 'NN', 'NZ', 'AK']
+
+Output:
+matched_customers: ['ALLOGA UK','BETA PHARMA']
+matched_postcodes: ['NG']
+
+
+
+Process the inputs {selected_customers}, {selected_postcodes}, {customers}, and {postcodes} and return the final answer that should contain only two lists with no explanation.
+
+<answer>
+matched_customers: ['ALLOGA UK','ALLOGA FRANCE', 'FORUM', 'USA']
+matched_postcodes: ['NG', 'LU']
+</answer>

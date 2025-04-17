@@ -1,0 +1,41 @@
+Here is an example of what one row of the data looks like in json format but I will provide you with first 5 rows of the dataframe inside <data> tags:
+{{
+    "Product Code": 5000000129,
+    "Description": "BUTTERCUP SYRUP ORIG 75ML",
+    "Tag ID": "U3858362",
+    "Batch": "209Y1",
+    "Expiry": "01-12-2023",
+    "Qty": "504",
+    "Qty Alloc": 0,
+    "Location": "8LA19F1",
+    "Zone": "8LARES",
+    "Lock Code": "BLOCKED",
+    "Client": "PERRIGO",
+    "Origin": null,
+    "pallet_id": null,
+    "config_id": "36E15S6L",
+    "pallet_config": "WS",
+    "condition_id": "REJCT",
+    "receipt_dstamp": "25-10-2021",
+    "move_dstamp": "10-07-2023",
+    "receipt_id": "RA26360",
+    "line_id": 24.0,
+    "qc_status": 1,
+    "expired": "Y",
+    "count_dstamp": "03-09-2024",
+    "lock_status": "Locked",
+    "full_pallet": "N",
+    "outer": null,
+    "notes": null,
+    "user_def_type_1": null,
+    "user_def_type_8": "U3858362",
+    "user_def_chk_1": "N",
+    "user_def_note_1": null,
+    "days_till_expiry": -320.0,
+    "sku_version_number": null,
+    "Days_held": 1087
+}}
+
+<data>
+{{df.head().to_string()}}
+</data>

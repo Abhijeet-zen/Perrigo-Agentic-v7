@@ -1,0 +1,129 @@
+Here is an example of what one row of the data looks like in json format but I will provide you with first 5 rows of the dataframe inside <data> tags:
+{{
+  "Order ID": "21090936",
+  "Pallet Qty": "31",
+  "Company Name": "DHL",
+  "Pallet Unit - Final": "Eur",
+  "FTL/LTL - Shipment": "LTL",
+  "FTL/LTL - Pallets": "LTL",
+  "Truck Type": "Regular",
+  "Temp Final": "Temp Control",
+  "Load Supplier": "KWIZDA PHARMADISTRIBUTION GMBH",
+  "Load Group": "KWIZDA",
+  "Load Address": "Achauerstrasse 2",
+  "Load City": "Leopoldsdorf",
+  "Load Post Code": "2333",
+  "Load Country Code": "AT",
+  "Load Country": "Austria",
+  "Delivery Supplier": "OMEGA PHARMA HUNGARY KFT",
+  "Delivery Group": "OMEGA PHARMA",
+  "Delivery Address": "Rakospalotai Hatarut 2",
+  "Delivery City": "Budapest",
+  "Delivery Post Code": "1158",
+  "Delivery County Code": "HU",
+  "Delivery County": "Hungary",
+  "Load Lane": "AT23",
+  "Delivery Lane": "HU11",
+  "Trade Lane": "AT-HU",
+  "Tradeline": "AT23-HU11",
+  "Route": "KWIZDA AT→OMEGA PHARMA HU",
+  "3PL Lead Time": "5",
+  "Order Creation Day": "14-11-2023",
+  "Expected Load Day": "20-11-2023",
+  "Expected Delivery Day": "23-11-2023",
+  "Actual Load Day": "20-11-2023",
+  "Actual Delivery Day": "01-01-2024",
+  "Collection Status": "On Time",
+  "Collection Range": "On Time",
+  "Delivery Status": "Late",
+  "Delivery Range": "> 7 Days",
+  "Actual Lead Time": "30",
+  "Creation Week": "46",
+  "Creation Month": "November",
+  "Creation Quarter": "Q4",
+  "Creation Year": "2023",
+  "Collection Week": "47",
+  "Collection Quarter": "Q4",
+  "Collection Month": "November",
+  "Collection Year": "2023",
+  "Delivery Week": "1",
+  "Delivery Quarter": "Q1",
+  "Delivery Month": "January",
+  "Delivery Month Number": "1",
+  "Delivery Year": "2024",
+  "Currency": "Euro",
+  "Final Rate": "1,467.88",
+  "Agreed Extra Costs": "-",
+  "Total Extra Costs": "15",
+  "Total Fuel Price": "176.15",
+  "Final Price": "1,659.03",
+  "Total Cost": "1,659.03",
+  "Truck Max": "33"
+}}
+
+<data>
+{{df.head().to_string()}}
+</data>
+
+Some key things to note about the data:
+- Orders and shipments can be used interchangeably in the user query
+- Consider date as delivery date unless otherwise specified.
+
+Here is the description of these columns:
+Order ID : 3PL Data
+Pallet Qty : Number of Pallets in the truck
+Company Name : Transporter Name
+Pallet Unit - Final : Whether Euro pallet (Capacity 33) or Industrial Pallet (Capacity 26)
+FTL/LTL - Shipment : LTL indicates Less than Truck Load, LTL Indicates Full Truck Load (Based on 3PL Data)
+FTL/LTL - Pallets : LTL indicates Less than Truck Load, LTL Indicates Full Truck Load (Based on number of Pallets)
+Truck Type : Considered Double Stack if Pallets>Truck Capacity. High Capacity if Pallets> Double Stacked Capacity
+Temp Final : Is the truck temperature controlled
+Load Supplier : Load Point Details
+Load Group : Load Point Details
+Load Address : Load Point Details
+Load City : Load Point Details
+Load Post Code : Load Point Details
+Load Country Code : Load Point Details
+Load Country : Load Point Details
+Delivery Supplier : Delivery Point Details
+Delivery Group : Delivery Point Details
+Delivery Address : Delivery Point Details
+Delivery City : Delivery Point Details
+Delivery Post Code : Delivery Point Details
+Delivery County Code : Delivery Point Details
+Delivery County : Delivery Point Details
+Trade Lane : Source country to destination country
+Tradeline : Source Post Code to destination postcode
+Route : Source Supplier to Destination Supplier
+3PL Lead Time : Lead time for delivery
+Order Creation Day : Date info
+Expected Load Day : Date info
+Expected Delivery Day : Date info
+Actual Load Day : Date info
+Actual Delivery Day : Date info
+Collection Status : If Collection is late
+Collection Range : By how much is it late
+Delivery Status : If Delivery is late
+Delivery Range : By how much is it late
+Actual Lead Time : Actual Lead Time
+Creation Week : Week of creation
+Creation Month : Month of creation
+Creation Quarter : Quarter of Creation
+Creation Year : Year of Creation
+Collection Week : Week of Collection
+Collection Quarter : Quarter of Collection
+Collection Month : Month of Collection
+Collection Year : Year of Collection
+Delivery Week : Week of Delivery - Use this date unless otherwise mentioned
+Delivery Quarter : Quarter of Delivery
+Delivery Month : Month of Delivery
+Delivery Month Number : Month of Delivery
+Delivery Year : Year of Delivery
+Currency : Currency
+Final Rate : Final Rate for the shipment
+Agreed Extra Costs : Additional Cost
+Total Extra Costs : Total Extra Cost
+Total Fuel Price : Fuel price absolute
+Final Price : Final Price - This is the actual cost not adjusted for currency
+Total Cost : Final Price - This is the actual cost adjusted for currency
+Truck Max : Maximum Truck Capacity depending on route
