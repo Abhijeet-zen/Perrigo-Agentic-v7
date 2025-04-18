@@ -149,7 +149,6 @@ def process_conversation(config):
                 else:
                     # user_msg = input("Enter your response:")
                     st.session_state.current_state["messages"] = add_messages(st.session_state.current_state["messages"],[HumanMessage(content=st.session_state.validate_parameters_msg,name="Human")])
-                    # st.session_state.current_state["messages"] = [HumanMessage(content=st.session_state.validate_parameters_msg,name="Human")]
                     st.session_state.running_validate_parameters =False
                     
             elif st.session_state.state['current']=='await_user_validation':
@@ -161,7 +160,6 @@ def process_conversation(config):
                     else:
                         # user_msg = input("Enter your response:")
                         st.session_state.current_state["messages"] = add_messages(st.session_state.current_state["messages"],[HumanMessage(content=st.session_state.await_user_validation_msg,name="Human")])
-                        # st.session_state.current_state["messages"] = [HumanMessage(content=st.session_state.await_user_validation_msg,name="Human")]
                         st.session_state.running_await_user_validation = False
                 else:
                     pass
@@ -306,19 +304,20 @@ def main():
     # st.subheader("💬 GenAI Answer Bot")
     if user_question := st.chat_input("Type your message...", key="user_input"):
 
-        # Append the message to conversation history
-        st.session_state.state["messages"] = add_messages(
-            st.session_state.state["messages"],
-            [HumanMessage(content=user_question,name="Human")]
-        )
-
-        
-
         # Inject the response into the appropriate Streamlit variable for validation
-        if st.session_state.running_validate_parameters:
-            st.session_state.validate_parameters_msg = user_question
-        elif st.session_state.running_await_user_validation:
-            st.session_state.await_user_validation_msg = user_question
+        if st.session_state.running_await_user_validation==True or st.session_state.running_validate_parameters==True:
+            if st.session_state.running_validate_parameters:
+                st.session_state.validate_parameters_msg = user_question
+            elif st.session_state.running_await_user_validation:
+                st.session_state.await_user_validation_msg = user_question
+            
+        else:
+            # Append the message to conversation history
+            st.session_state.state["messages"] = add_messages(
+                st.session_state.state["messages"],
+                [HumanMessage(content=user_question,name="Human")]
+                )
+
 
         # st.session_state.conversation_state["next"] = "supervisor"
         config = {"configurable": {"thread_id": "thread_id_1"}}
